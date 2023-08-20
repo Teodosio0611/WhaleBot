@@ -8,8 +8,8 @@ namespace WhaleBot {
             // non-copyable && non-movable
             Authorization(const Authorization &) = delete;
             Authorization(Authorization &&) = delete;
-            void operator=(const Authorization &) = delete;
-            void operator=(Authorization &&) = delete;
+            Authorization& operator=(const Authorization &) = delete;
+            Authorization& operator=(Authorization &&) = delete;
 
         public:
             static Authorization &getInstance() {
@@ -17,10 +17,10 @@ namespace WhaleBot {
                 return instance;
             }
 
-            bool setAPIKey(const std::sting_view key);
+            bool setAPIKey(const std::string_view key);
 
-            std::string_view getAPIKey() const;
-
+        private:
+            std::string apiKey_;
             
     };
 }
